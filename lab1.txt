@@ -1,0 +1,48 @@
+Task 1. 
+
+1)     1. EmpID, 2. SSN, 3. Email, 4. Phone, 5. {EmpID, Name}, 6. {Phone, Name}, 7. {EmpID, SSN, Email} 
+2)     EmpID, SSN, Email, Phone 
+3)     EmpID, it’s the basic option for most tables to pick primary key. Also, it can be used as serial if needed (EmpID), while other candidates are not. 
+4)     No, every employee has their own phone number unless they both use the same number (which is practically impossible and inpreferable). Based on the data range, they can’t. 
+
+Task 2. 
+1)     StudentID (for Students table), CourseCode (if exists table related to Courses) 
+2)     It identifies 1. Unique id for Student, assuming every student must have distinct identification number, 2. Every course must have their own code to ensure their identativity 
+3)     Other candidate keys (excluding primary keys StudentID, CourseCode) doesn’t exist (because section, semester, year, grade and credits are repeatable data) 
+
+  
+Task 3 (1.2) 
+1.      StudentID, CourseID references Course(CourseID) 
+2.      Enrollment: StudentID references Student(StudentID), Course(CourseID) 
+3.      ProfID, references Department(DeptCode) 
+4.      CourseID references Department(DeptCode) as DepartmentCode 
+
+  
+
+Part 2 
+1.      Strong: (Patients, Doctors, Departments, Appointments (associative), Prescriptions (associative)), Weak: Hospital Rooms (depend on departments) 
+2. 
+Patient: PatientID: simple, name: simple, birthdate: simple, address: composite, phone numbers: multi-valued, insurance information: simple 
+
+Doctors: DoctorID: simple, name: simple, specializations:multi-valued, phone number: simple/multi-valued (unless specified), office location: simple 
+
+Department: Department code: simple, name: simple, location: simple/composite (depends on address) 
+
+Appointments: track: simple, purpose of visit: simple, notes: simple 
+
+Prescriptions: track (dosage && instructions): simple 
+
+Hospital rooms: RoomNumber: simple 
+
+ 
+
+3. Patient - Doctor: M:N (many-to-many) 
+Patient - Appointment: 1:N (1 patient: many appointments) 
+Doctor - Appointments: 1:N (1 doctor: many appointments) 
+Doctor - Prescription: 1:N (1 doctor: many prescriptions) 
+Patient - Prescription: 1:N (1 patient: many prescriptions) 
+Department - Hospital Rooms: 1:N (1 department: many rooms) 
+Doctors - Department: N/A 
+
+ 
+Task 4 and 5: https://kbtuedu.sharepoint.com/:b:/r/sites/DB26AutumnN.Tolendi/Shared%20Documents/Practice%20(13.00-14.00)/LabWork1/25B031387_Nurdaulet_Malik/25B031387_Nurdaulet_Malik_task2.pdf?d=w270c016ee93b46d2974148efa6d8092f&csf=1&web=1&e=fbT3l4
