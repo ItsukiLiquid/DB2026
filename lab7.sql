@@ -64,7 +64,7 @@ on o.customer_id = c.customer_id;
 
 
 -- task 2
-select c.customer_id, c.full_name, count(o.order_id) as order_count
+select c.customer_id, c.full_name, count(o.order_id) as orders_count
 from orders o
 right join customers c -- includes non-matching rows from customers, if they haven't ordered
 on o.customer_id = c.customer_id
@@ -107,7 +107,7 @@ select ids.order_id, coalesce(sum(oi.quantity * oi.unit_price), 0) as order_tota
 from all_order_ids ids
 left join order_items oi -- left join to keep all elements from ids with getting quantity and unit_price from right oi if exists
 using (order_id) -- <> on ids.order_id = oi.order_id but only 1 column
-group by order_id;
+group by ids.order_id;
 
 
 
@@ -137,5 +137,5 @@ select p.product_id, p.product_name, coalesce(sum(oi.quantity), 0) as total_sold
 from products p
 left join order_items oi
 on oi.product_id = p.product_id
-group by p.product_id
+group by p.product_id;
 -- order by p.product_id; -- visual confirmation of correctness
